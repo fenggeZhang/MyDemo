@@ -1,0 +1,23 @@
+create table user(
+	user_id int PRIMARY KEY AUTO_INCREMENT,
+	user_phone  VARCHAR(20),##手机号
+	user_pwd VARCHAR(100),##密码
+	user_name VARCHAR(20),##用户名
+	user_photo VARCHAR(200),##头像
+	user_remark VARCHAR(100)##备注
+);
+create table express(
+	express_id int PRIMARY KEY AUTO_INCREMENT,
+	user_id int,
+	express_no varchar(50),##快递单号
+	express_companycode varchar(10),##快递简称
+	express_remark VARCHAR(100)##备注
+);     
+create table company(
+	company_id int PRIMARY KEY AUTO_INCREMENT,
+	company_code VARCHAR(10),##快递公司简称
+	company_name varchar(20),##快递公司名称
+	company_img  varchar(200),##快递图片
+	company_phone VARCHAR(20),##电话
+	company_remark varchar(100)##备注
+);
