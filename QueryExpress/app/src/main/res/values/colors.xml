@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="textDown">#3a9beb</color>
+    <color name="textUp">#A0A0A0</color>
+    <color name="lineColor">#e2e2e2</color>
+    <color name="background">#F2F2F2</color>
+    <color name="white">#ffffff</color>
+    <color name="fontcolor">#e22ee2</color>
+    <color name="white1">#fffbff</color>
+    <color name="delete_red">#ff0000</color>
+    <color name="black_text">#3e3e3e</color>
+</resources>

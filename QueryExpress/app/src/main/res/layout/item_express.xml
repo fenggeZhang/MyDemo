@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal">
+
+    <ImageView
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="15dp"
+        android:id="@+id/item_company_img"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:src="@mipmap/zto_img"/>
+
+    <LinearLayout
+        android:layout_marginTop="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_toRightOf="@+id/item_company_img"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:textColor="@color/black_text"
+            android:textSize="16sp"
+            android:id="@+id/item_express_no"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="5dp"
+            android:text="中通 719504046744"/>
+
+        <TextView
+            android:id="@+id/item_express_ask"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="说明。。。。。"/>
+    </LinearLayout>
+
+    <TextView
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="15dp"
+        android:id="@+id/item_express_time"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignParentRight="true"
+        android:gravity="center"
+        android:text="11-10"/>
+    <!--
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_alignParentBottom="true"
+            android:background="@color/lineColor"/>-->
+</RelativeLayout>

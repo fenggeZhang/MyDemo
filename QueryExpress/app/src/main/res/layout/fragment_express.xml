@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:id="@+id/layout_root"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/background"
+              android:orientation="vertical"
+              android:padding="20dp">
+
+    <RelativeLayout
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:id="@+id/order_edit"
+            style="@style/btn_style"
+            android:hint="请输入快递单号"
+            />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="20dp"
+            android:background="@mipmap/code"/>
+    </RelativeLayout>
+
+    <TextView style="@style/x_line_style"/>
+
+    <RelativeLayout
+        android:id="@+id/company_rl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp">
+
+        <EditText
+            android:id="@+id/company_edit"
+            style="@style/btn_style"
+            android:hint="请选择快递公司"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="20dp"
+            android:background="@mipmap/search_right"/>
+    </RelativeLayout>
+
+    <TextView style="@style/x_line_style"/>
+
+
+    <Button
+        android:layout_height="45dp"
+        android:id="@+id/save_btn"
+        style="@style/my_btn"
+        android:layout_width="match_parent"
+        android:layout_marginTop="30dp"
+        android:text="查询"/>
+
+</LinearLayout>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+    <RadioGroup
+        android:id="@+id/express_radiogroup"
+        android:layout_width="match_parent"
+        android:layout_height="54dp"
+        android:orientation="horizontal">
+        <RadioButton
+            android:id="@+id/home_radio"
+            style="@style/radio"
+            android:checked="true"
+            android:drawableTop="@drawable/index_home"
+            android:text="首页"/>
+        <RadioButton
+            android:id="@+id/express_radio"
+            style="@style/radio"
+            android:drawableTop="@drawable/index_express"
+            android:text="查快递"/>
+        <RadioButton
+            android:id="@+id/phone_radio"
+            style="@style/radio"
+            android:drawableTop="@drawable/index_phone"
+            android:text="快递电话"/>
+    </RadioGroup>
+</merge>
