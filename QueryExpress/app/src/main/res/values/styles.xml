@@ -64,4 +64,40 @@
         <item name="android:textColor">@color/textUp</item>
         <item name="android:textSize">16sp</item>
     </style>
+    <!--分割线样式-->
+    <style name="line_x">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">0.5dp</item>
+        <item name="android:layout_marginRight">15dp</item>
+        <item name="android:layout_marginLeft">15dp</item>
+        <item name="android:background">@color/line_color</item>
+    </style>
+    <!--分割线样式-->
+    <style name="line_y">
+        <item name="android:layout_width">1dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_marginTop">15dp</item>
+        <item name="android:layout_marginBottom">15dp</item>
+        <item name="android:background">@color/line_color</item>
+    </style>
+    <!--edittext-->
+    <style name="my_edittext">
+        <item name="android:textColorHint">@color/hint</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_weight">4</item>
+        <item name="android:background">@null</item>
+        <item name="android:textSize">15sp</item>
+    </style>
+    <!--button的样式-->
+    <style name="my_btn1">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">40dp</item>
+        <item name="android:background">@drawable/my_btn</item>
+        <item name="android:textSize">17sp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:layout_marginLeft">20dp</item>
+        <item name="android:layout_marginRight">20dp</item>
+        <item name="android:layout_marginTop">15dp</item>
+    </style>
 </resources>

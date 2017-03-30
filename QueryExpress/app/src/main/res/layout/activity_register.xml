@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_register"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.zfg.queryexpress.activity.RegisterActivity">
+
+    <include
+        layout="@layout/title_bar"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:text="手机号"
+            android:textColor="@color/textUp"
+            android:textSize="15sp"/>
+
+        <EditText
+            android:id="@+id/phone_edit"
+            style="@style/my_edittext"
+            android:layout_marginLeft="8dp"
+            android:hint="请输入手机号"/>
+
+    </LinearLayout>
+
+    <View
+        style="@style/line_x"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:text="密码"
+            android:textColor="@color/textUp"
+            android:textSize="15sp"/>
+
+        <EditText
+            android:id="@+id/pwd_edit"
+            style="@style/my_edittext"
+            android:layout_marginLeft="8dp"
+            android:hint="请输入密码"/>
+
+    </LinearLayout>
+
+    <View
+        style="@style/line_x"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:text="确认密码"
+            android:textColor="@color/textUp"
+            android:textSize="15sp"/>
+
+        <EditText
+            android:id="@+id/pwd2_edit"
+            style="@style/my_edittext"
+            android:layout_marginLeft="8dp"
+            android:hint="确认密码"/>
+
+    </LinearLayout>
+
+    <View
+        style="@style/line_x"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:text="验证码"
+            android:textColor="@color/textUp"
+            android:textSize="15sp"/>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="4"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/code_edit"
+                style="@style/my_edittext"
+                android:layout_marginLeft="8dp"
+                android:hint="请输入验证码"/>
+
+            <TextView
+                android:id="@+id/getcode_text"
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="获取验证码"
+                android:textColor="@color/textDown"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <View
+        style="@style/line_x"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="15dp">
+
+        <CheckBox
+            android:id="@+id/my_checkbox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="我已同意并阅读"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="《快递查使用协议》"
+            android:textColor="@color/textDown"/>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/register_btn"
+        style="@style/my_btn1"
+        android:text="注 册"/>
+</LinearLayout>

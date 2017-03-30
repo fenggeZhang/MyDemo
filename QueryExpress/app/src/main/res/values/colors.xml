@@ -12,4 +12,7 @@
     <color name="white1">#fffbff</color>
     <color name="delete_red">#ff0000</color>
     <color name="black_text">#3e3e3e</color>
+    <color name="shadow">#AAEBEBEB</color>
+    <color name="line_color">#629e9e9e</color>
+    <color name="hint">#c59e9e9e</color>
 </resources>

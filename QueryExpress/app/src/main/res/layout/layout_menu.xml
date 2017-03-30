@@ -53,6 +53,10 @@
                 android:text="手机号"/>
         </LinearLayout>
 
+        <View
+            android:layout_width="210dp"
+            style="@style/x_line_style"/>
+
         <LinearLayout
             android:id="@+id/item_2"
             style="@style/item_style">
@@ -71,6 +75,10 @@
                 android:gravity="center"
                 android:text="我的常用快递"/>
         </LinearLayout>
+
+        <View
+            android:layout_width="210dp"
+            style="@style/x_line_style"/>
 
         <LinearLayout
             android:id="@+id/item_3"
@@ -91,6 +99,10 @@
                 android:text="意见反馈"/>
         </LinearLayout>
 
+        <View
+            android:layout_width="210dp"
+            style="@style/x_line_style"/>
+
         <LinearLayout
             android:id="@+id/item_4"
             style="@style/item_style">
@@ -109,5 +121,8 @@
                 android:gravity="center"
                 android:text="设置"/>
         </LinearLayout>
+        <View
+            android:layout_width="210dp"
+            style="@style/x_line_style"/>
     </LinearLayout>
 </RelativeLayout>
