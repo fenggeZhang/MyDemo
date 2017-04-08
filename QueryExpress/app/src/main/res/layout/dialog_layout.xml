@@ -14,6 +14,7 @@
             android:hint="请输入快递单号"
         />
         <ImageView
+            android:id="@+id/sacn_img_dialog"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"

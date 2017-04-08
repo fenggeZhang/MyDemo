@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
@@ -33,15 +34,18 @@ import com.zfg.queryexpress.activity.ExpressActivity;
 import com.zfg.queryexpress.application.MyApplication;
 import com.zfg.queryexpress.common.WaitDialog;
 import com.zfg.queryexpress.utils.ToastUtils;
+import com.znq.zbarcode.CaptureActivity;
 
 /**
  * Created by admin on 2016/10/26.
  */
 public class ExpressFragment extends Fragment implements View.OnClickListener {
     public static final int NOHTTP_WHAT_LOAD = 1;
+    public static final int QR_CODE = 10;
     View mView;
     private EditText mOrdernoEditText, mCompanyEditText;
     private Button mButton;
+    private ImageView mScanImageView;
     String mPath;
     //自定义一个dialog
     private WaitDialog mDialog;
@@ -70,13 +74,16 @@ public class ExpressFragment extends Fragment implements View.OnClickListener {
     private void initListener() {
         mCompanyRelativeLayout.setOnClickListener(this);
         mButton.setOnClickListener(this);
+        mScanImageView.setOnClickListener(this);
     }
 
     private void initViews() {
         mCompanyRelativeLayout = (RelativeLayout) mView.findViewById(R.id.company_rl);
         mOrdernoEditText = (EditText) mView.findViewById(R.id.order_edit);
         mCompanyEditText = (EditText) mView.findViewById(R.id.company_edit);
+        mScanImageView = (ImageView) mView.findViewById(R.id.scan_img);
         mButton = (Button) mView.findViewById(R.id.save_btn);
+
     }
 
     @Override
@@ -86,15 +93,20 @@ public class ExpressFragment extends Fragment implements View.OnClickListener {
                 selectCompanyDialog();
                 break;
             case R.id.save_btn:
-                Log.e("orderNo","11"+mOrdernoEditText.getText().toString());
-                Log.e("company","22"+mCompanyEditText.getText().toString());
-                if(mOrdernoEditText.getText().toString().equals("")){
-                    ToastUtils.showToast(getActivity(),"订单号不能为空");
-                }else if(mCompanyEditText.getText().toString().equals("")){
-                    ToastUtils.showToast(getActivity(),"快递公司不能为空");
-                }else{
+                Log.e("orderNo", "11" + mOrdernoEditText.getText().toString());
+                Log.e("company", "22" + mCompanyEditText.getText().toString());
+                if (mOrdernoEditText.getText().toString().equals("")) {
+                    ToastUtils.showToast(getActivity(), "订单号不能为空");
+                } else if (mCompanyEditText.getText().toString().equals("")) {
+                    ToastUtils.showToast(getActivity(), "快递公司不能为空");
+                } else {
                     sendRequest();
                 }
+                break;
+            case R.id.scan_img:
+                ToastUtils.showToast(getActivity(), "扫一扫把");
+                Intent intent1 = new Intent(getActivity(), CaptureActivity.class);
+                startActivityForResult(intent1,  QR_CODE);
                 break;
         }
     }
@@ -129,18 +141,19 @@ public class ExpressFragment extends Fragment implements View.OnClickListener {
         });
         builder.create().show();
     }
+
     private OnResponseListener<String> onResponseListener = new OnResponseListener<String>() {
         @SuppressWarnings("unused")
         public void onSucceed(int what, Response<String> response) {
             if (what == NOHTTP_WHAT_LOAD) {
                 String result = response.get();// 响应结果
-                ToastUtils.showToast(getActivity(),"跳转到详情");
-                Log.e("result",result);
-                Intent intent=new Intent();
-                intent.putExtra("company_img",result);
-                intent.putExtra("company_name",mCompanyEditText.getText().toString());
-                intent.putExtra("express_no",mOrdernoEditText.getText().toString());
-                intent.putExtra("remark","");
+                ToastUtils.showToast(getActivity(), "跳转到详情");
+                Log.e("result", result);
+                Intent intent = new Intent();
+                intent.putExtra("company_img", result);
+                intent.putExtra("company_name", mCompanyEditText.getText().toString());
+                intent.putExtra("express_no", mOrdernoEditText.getText().toString());
+                intent.putExtra("remark", "");
                 intent.setClass(getActivity(), ExpressActivity.class);
                 startActivity(intent);
             }
@@ -179,4 +192,14 @@ public class ExpressFragment extends Fragment implements View.OnClickListener {
             mDialog.show();
         }
     };
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == QR_CODE) {
+            String result = data.getStringExtra(CaptureActivity.EXTRA_STRING);
+            mOrdernoEditText.setText(result);
+            Toast.makeText(getActivity(), result + "", Toast.LENGTH_SHORT).show();
+        }
+    }
 }

@@ -100,4 +100,15 @@
         <item name="android:layout_marginRight">20dp</item>
         <item name="android:layout_marginTop">15dp</item>
     </style>
+    <!--button的样式-->
+    <style name="my_btn_login">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">40dp</item>
+        <item name="android:background">@drawable/my_btn</item>
+        <item name="android:textSize">17sp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:layout_marginLeft">20dp</item>
+        <item name="android:layout_marginRight">20dp</item>
+        <item name="android:layout_marginTop">15dp</item>
+    </style>
 </resources>

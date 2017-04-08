@@ -35,7 +35,7 @@ import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
-import jp.wasabeef.glide.transformations.CropCircleTransformation;
+
 
 public class ExpressActivity extends AppCompatActivity implements View.OnClickListener {
     public static final int NOHTTP_WHAT_GETTRACES = 5;
@@ -92,7 +92,7 @@ public class ExpressActivity extends AppCompatActivity implements View.OnClickLi
         String remark = intent.getStringExtra("remark");
         Glide.with(this)
                 .load(company_img)
-                .bitmapTransform(new CropCircleTransformation(this))
+//                .bitmapTransform(new CropCircleTransformation(this))
                 .into(mCompanyImageView);
         mExpressNoTextView.setText(company_name + " " + express_no);
         mRemarkTextView.setText(remark);

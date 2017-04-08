@@ -14,8 +14,6 @@ import com.zfg.queryexpress.beans.ExpressGson;
 
 import java.util.List;
 
-import jp.wasabeef.glide.transformations.CropCircleTransformation;
-
 /**
  * Created by ZFG on 2016/12/14.
  */
@@ -66,7 +64,7 @@ public class ExpressAdapter extends BaseAdapter {
 
         Glide.with(mContext)
                 .load(express.getCompany_img())
-                .bitmapTransform(new CropCircleTransformation(mContext))
+//                .bitmapTransform(new CropCircleTransformation(mContext))
                 .into(viewHolder.itemCompanyImg);
        // Log.e("img_url", express.getCompany_img());
         viewHolder.itemExpressNo.setText(express.getCompany_name() + " " + express.getExpress_no());

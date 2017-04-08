@@ -1,6 +1,7 @@
 package com.zfg.queryexpress.application;
 
 import android.app.Application;
+import android.content.Context;
 
 import com.yolanda.nohttp.Logger;
 import com.yolanda.nohttp.NoHttp;
@@ -9,6 +10,7 @@ import com.yolanda.nohttp.NoHttp;
  * Created by ZFG on 2016/12/14.
  */
 public class MyApplication extends Application{
+    public static Context applicationContext;
     public static MyApplication mInstance;
     public static String url = "http://192.168.1.103:8080/QueryExpress";
 

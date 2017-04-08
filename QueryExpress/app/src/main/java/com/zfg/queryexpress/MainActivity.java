@@ -40,6 +40,7 @@ import com.yolanda.nohttp.rest.Request;
 import com.yolanda.nohttp.rest.RequestQueue;
 import com.yolanda.nohttp.rest.Response;
 import com.zfg.queryexpress.activity.MyInfoActivity;
+import com.zfg.queryexpress.activity.SettingActivity;
 import com.zfg.queryexpress.adapter.FragmentAdapter;
 import com.zfg.queryexpress.application.MyApplication;
 import com.zfg.queryexpress.common.MyViewPager;
@@ -48,9 +49,12 @@ import com.zfg.queryexpress.common.WaitDialog;
 import com.zfg.queryexpress.fragment.ExpressFragment;
 import com.zfg.queryexpress.fragment.Home1Fragment;
 import com.zfg.queryexpress.fragment.PhoneFragment;
+import com.znq.zbarcode.CaptureActivity;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static com.zfg.queryexpress.fragment.ExpressFragment.QR_CODE;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     public static final int NOHTTP_WHAT_LOAD = 1;
@@ -72,6 +76,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private ImageView mAddImageView;
     private Dialog dialog;
     private Button mCancelButton, mSaveButton;
+    private ImageView mImageView;
     private RelativeLayout mCompanyRelativeLayout;
     private EditText mOrdernoEditText, mCompanyEditText, mRemarkEditText;
     private String mOrderNoString, mCompanyString, mRemarkString;
@@ -124,6 +129,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mCancelButton = (Button) dialogWindow.findViewById(R.id.cancel_btn);
         mSaveButton = (Button) dialogWindow.findViewById(R.id.save_btn);
         mCompanyRelativeLayout = (RelativeLayout) dialogWindow.findViewById(R.id.company_rl);
+        mImageView = (ImageView) dialogWindow.findViewById(R.id.sacn_img_dialog);
         mOrdernoEditText = (EditText) dialogWindow.findViewById(R.id.order_edit);
         mCompanyEditText = (EditText) dialogWindow.findViewById(R.id.company_edit);
         mRemarkEditText = (EditText) dialogWindow.findViewById(R.id.remark_edit);
@@ -183,6 +189,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mAddImageView.setOnClickListener(this);
         mCancelButton.setOnClickListener(this);
         mSaveButton.setOnClickListener(this);
+        mImageView.setOnClickListener(this);
         mCompanyRelativeLayout.setOnClickListener(this);
     }
 
@@ -246,7 +253,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 Toast.makeText(this, "我是item3", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.item_4:
-                Toast.makeText(this, "我是item4", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(MainActivity.this, SettingActivity.class));
+                Toast.makeText(this, "设置", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.img_my:
                 mMenu.toggle();
@@ -265,6 +273,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.company_rl:
                 selectCompanyDialog();
+                break;
+            case R.id.sacn_img_dialog:
+                Intent intent1 = new Intent(this, CaptureActivity.class);
+                startActivityForResult(intent1, QR_CODE);
                 break;
         }
     }
@@ -373,4 +385,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             mDialog.show();
         }
     };
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == QR_CODE) {
+            String result = data.getStringExtra(CaptureActivity.EXTRA_STRING);
+            mOrdernoEditText.setText(result);
+            Toast.makeText(this, result + "", Toast.LENGTH_SHORT).show();
+        }
+    }
 }

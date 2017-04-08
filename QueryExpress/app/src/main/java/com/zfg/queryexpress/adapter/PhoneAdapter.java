@@ -14,8 +14,6 @@ import com.zfg.queryexpress.beans.Company;
 
 import java.util.List;
 
-import jp.wasabeef.glide.transformations.CropCircleTransformation;
-
 /**
  * Created by zfg on 2016/12/23.
  */
@@ -62,7 +60,7 @@ public class PhoneAdapter extends BaseAdapter {
         }
         Glide.with(mContext)
                 .load(mCompanyList.get(position).getCompany_img())
-                .bitmapTransform(new CropCircleTransformation(mContext))
+//                .bitmapTransform(new CropCircleTransformation(mContext))
                 .into(viewHolder.mCompanyImgImageView);
         viewHolder.mCompanyNameTextView.setText(mCompanyList.get(position).getCompany_name());
         viewHolder.mCompanyPhoneTextView.setText(mCompanyList.get(position).getCompany_phone());

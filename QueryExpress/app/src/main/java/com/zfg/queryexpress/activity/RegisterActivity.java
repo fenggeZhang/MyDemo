@@ -95,13 +95,19 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     }
 
     private boolean judgePwd() {
+//        密码必须是字母数字混合 并且在6到16位之间
+        String regex = "^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,16}$";
         boolean flog = false;
         if (!TextUtils.isEmpty(mPwdEditText.getText())) {
             if (!TextUtils.isEmpty(mPwd2EditText.getText())) {
                 //
                 if (mPwd2EditText.getText().toString().equals(mPwdEditText.getText().toString())) {
                     //密码一致
-                    flog = true;
+                    if (mPwdEditText.getText().toString().matches(regex)) {
+                        flog = true;
+                    } else {
+                        ToastUtils.showToast(this, "密码必须是6到16位的数字或字母组成");
+                    }
                 } else {
                     ToastUtils.showToast(this, "两次密码不一致");
                 }
