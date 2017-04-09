@@ -1,5 +1,9 @@
 [
     {
+        "merged": "F:\\zfgProject0409\\QueryExpress\\easeui\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\ic_launcher.png",
+        "source": "F:\\zfgProject0409\\QueryExpress\\easeui\\src\\main\\res\\drawable-mdpi\\ic_launcher.png"
+    },
+    {
         "merged": "E:\\zfgDemo\\QueryExpress\\easeui\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\ic_launcher.png",
         "source": "E:\\zfgDemo\\QueryExpress\\easeui\\src\\main\\res\\drawable-mdpi\\ic_launcher.png"
     }

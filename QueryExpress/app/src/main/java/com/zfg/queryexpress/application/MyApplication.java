@@ -12,7 +12,7 @@ import com.yolanda.nohttp.NoHttp;
 public class MyApplication extends Application{
     public static Context applicationContext;
     public static MyApplication mInstance;
-    public static String url = "http://192.168.1.103:8080/QueryExpress";
+    public static String url = "http://192.168.0.102:8080/QueryExpress";
 
     @Override
     public void onCreate() {

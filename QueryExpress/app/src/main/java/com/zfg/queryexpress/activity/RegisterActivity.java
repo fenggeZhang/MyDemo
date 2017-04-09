@@ -1,10 +1,10 @@
 package com.zfg.queryexpress.activity;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
@@ -12,8 +12,13 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.hyphenate.EMError;
+import com.hyphenate.chat.EMClient;
+import com.hyphenate.exceptions.HyphenateException;
 import com.zfg.queryexpress.R;
+import com.zfg.queryexpress.chat.base.DemoHelper;
 import com.zfg.queryexpress.utils.ToastUtils;
 
 public class RegisterActivity extends AppCompatActivity implements View.OnClickListener {
@@ -74,11 +79,52 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                 /*判断电话号码格式是否正确,然后 判断不为空两次密码一致*/
                 if (judgePhone() && judgePwd() && judgeCode() && judgeCheckBox()) {
                     ToastUtils.showToast(this, "注册");
+//                    register();
                     Intent intent = new Intent(this, LoginActivity.class);
                     startActivity(intent);
                 }
                 break;
         }
+    }
+
+    private void register() {
+        new Thread(new Runnable() {
+            public void run() {
+                try {
+                    // call method in SDK
+                    EMClient.getInstance().createAccount(mPhoneEditText.getText().toString(), mPwdEditText.getText().toString());
+                    runOnUiThread(new Runnable() {
+                        public void run() {
+
+                            // save current user
+                            DemoHelper.getInstance().setCurrentUserName(mPhoneEditText.getText().toString());
+                            Toast.makeText(getApplicationContext(), getResources().getString(R.string.Registered_successfully), Toast.LENGTH_SHORT).show();
+                            finish();
+                            Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
+                            startActivity(intent);
+                        }
+                    });
+                } catch (final HyphenateException e) {
+                    runOnUiThread(new Runnable() {
+                        public void run() {
+
+                            int errorCode=e.getErrorCode();
+                            if(errorCode== EMError.NETWORK_ERROR){
+                                Toast.makeText(getApplicationContext(), getResources().getString(R.string.network_anomalies), Toast.LENGTH_SHORT).show();
+                            }else if(errorCode == EMError.USER_ALREADY_EXIST){
+                                Toast.makeText(getApplicationContext(), getResources().getString(R.string.User_already_exists), Toast.LENGTH_SHORT).show();
+                            }else if(errorCode == EMError.USER_AUTHENTICATION_FAILED){
+                                Toast.makeText(getApplicationContext(), getResources().getString(R.string.registration_failed_without_permission), Toast.LENGTH_SHORT).show();
+                            }else if(errorCode == EMError.USER_ILLEGAL_ARGUMENT){
+                                Toast.makeText(getApplicationContext(), getResources().getString(R.string.illegal_user_name),Toast.LENGTH_SHORT).show();
+                            }else{
+                                Toast.makeText(getApplicationContext(), getResources().getString(R.string.Registration_failed), Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    });
+                }
+            }
+        }).start();
     }
 
     private boolean judgePhone() {

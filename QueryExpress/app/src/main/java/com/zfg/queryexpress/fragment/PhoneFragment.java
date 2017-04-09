@@ -2,7 +2,6 @@ package com.zfg.queryexpress.fragment;
 
 
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -32,6 +31,7 @@ import com.zfg.queryexpress.R;
 import com.zfg.queryexpress.adapter.PhoneAdapter;
 import com.zfg.queryexpress.application.MyApplication;
 import com.zfg.queryexpress.beans.Company;
+import com.zfg.queryexpress.chat.ui.ChatActivity;
 import com.zfg.queryexpress.common.WaitDialog;
 
 import java.lang.reflect.Type;
@@ -150,9 +150,12 @@ public class PhoneFragment extends Fragment implements AdapterView.OnItemClickLi
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        Intent intent = new Intent(Intent.ACTION_DIAL);
+        /*Intent intent = new Intent(Intent.ACTION_DIAL);
         Uri data = Uri.parse("tel:" +mCompanyList.get(position).getCompany_phone());
         intent.setData(data);
+        startActivity(intent);*/
+        Intent intent=new Intent(getActivity(), ChatActivity.class);
+        intent.putExtra("userId","zzia");
         startActivity(intent);
     }
 }

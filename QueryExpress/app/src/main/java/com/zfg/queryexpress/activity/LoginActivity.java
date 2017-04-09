@@ -31,11 +31,13 @@ import com.yolanda.nohttp.rest.RequestQueue;
 import com.yolanda.nohttp.rest.Response;
 import com.zfg.queryexpress.MainActivity;
 import com.zfg.queryexpress.R;
+import com.zfg.queryexpress.application.MyApplication;
 import com.zfg.queryexpress.chat.base.DemoHelper;
 import com.zfg.queryexpress.chat.db.DemoDBManager;
 import com.zfg.queryexpress.common.WaitDialog;
 import com.zfg.queryexpress.utils.ToastUtils;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
@@ -208,7 +210,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     private void sendLogin(String phone, String pwd) {
 
-        Request<String> request = NoHttp.createStringRequest("", RequestMethod.POST);
+        Request<String> request = NoHttp.createStringRequest(MyApplication.url, RequestMethod.POST);
+        request.add("methods", "login");
         request.add("phone", phone);
         request.add("pwd", pwd);
         mQueue.add(LOGIN_WHAT, request, onResponseListener);
@@ -258,23 +261,16 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             JSONObject jsonObject1 = null;
             //请求成功 对数据的操作
             if (i == LOGIN_WHAT) {
-                /*Log.e(TAG, response.get());
+                Log.e(TAG, response.get());
                 JSONObject jsonObject = null;
                 try {
                     jsonObject = new JSONObject(response.get());
-                    Result = jsonObject.getInt("Result");
-                    Msg = jsonObject.getString("Msg");
-                    jsonObject1 = jsonObject.getJSONObject("jsonData");
-                    userid = jsonObject1.getString("id");
-                    username = jsonObject1.getString("username");
-                    nickname = jsonObject1.getString("NickName");
-                    headimg = jsonObject1.getString("HeadImg");
-                    realname = jsonObject1.getString("RealName");//真实姓名
-                    linktel = jsonObject1.getString("LinkTel");//联系电话
-                    isopen = jsonObject1.getString("IsOpen");//是否公开
-                    resplace = jsonObject1.getString("ResPlace");//常驻地
-                    company = jsonObject1.getString("Company");//公司
-                    jiashao = jsonObject1.getString("JieShao");//个人介绍
+                    Result = jsonObject.getInt("result");
+                    Msg = jsonObject.getString("msg");
+                    jsonObject1 = jsonObject.getJSONObject("user");
+                    userid = jsonObject1.getString("user_id");
+                    username = jsonObject1.getString("user_phone");
+                    nickname = jsonObject1.getString("user_name");
                     //第一个参数：偏好设置文件的名称；第二个参数：文件访问模式
                     mSharedPreferences = getSharedPreferences(TYPE, MODE_PRIVATE);
                     //向偏好设置文件中保存数据
@@ -282,24 +278,17 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     mEditor.putString("userid", userid);
                     mEditor.putString("username", username);
                     mEditor.putString("nickname", nickname);
-                    mEditor.putString("headimg", headimg);
-                    mEditor.putString("realname", realname);
-                    mEditor.putString("linktel", linktel);
-                    mEditor.putString("isopen", isopen);
-                    mEditor.putString("resplace", resplace);
-                    mEditor.putString("company", company);
-                    mEditor.putString("jiashao", jiashao);
                     //提交保存结果
                     mEditor.commit();
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-                if (Result == 1) {
+                if (Result == 0) {
                     Log.e(TAG, "登录结果" + Result + ":" + Msg);
                     Log.e("获取昵称", "昵称" + nickname);
                     mHandler.sendEmptyMessage(LOGIN_WHAT_MESSAGE_);
                 }
-//                ToastUtils.showToast(getApplicationContext(), Msg);*/
+//                ToastUtils.showToast(getApplicationContext(), Msg);
             }
         }
 
